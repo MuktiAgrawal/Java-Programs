@@ -1,5 +1,3 @@
-import javax.swing.plaf.metal.MetalBorders.ScrollPaneBorder;
-
 /*Program to find the GCD of two numbers using Euclidean algorithm*/
 public class recursion_ques3 {
     public static int gcd(int a, int b) // gcd function using Euclidean algorithm

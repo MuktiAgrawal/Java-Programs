@@ -1,5 +1,4 @@
 // Program to calculate sum of digits of a number using recursion
-import java.util.*;
 public class recursion_ques1 {
     int sum=0;
     int sum_of_digits(int n)//function prototype

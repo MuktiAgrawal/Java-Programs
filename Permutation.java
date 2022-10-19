@@ -9,9 +9,9 @@ public class Permutation {
         else
         System.out.println("Array 1 and Array 2 are not permutations of each other");
     }
-    public boolean permutation(int[] array1,int[] array2){
-        int sum1=0,product1=1,sum2=0,product2=1;
+    public boolean permutation(int[] array1,int[] array2){        
         if(array1.length==array2.length){
+            int sum1=0,product1=1,sum2=0,product2=1;
             for(int i=0;i<array1.length;i++){
                 sum1+=array1[i];
                 sum2+=array2[i];

@@ -10,6 +10,8 @@ public class Rotate_matrix_90clockwise {
     }
     boolean rotateMatrix(int[][] matrix) {
         // TODO
+        if(matrix.length!=matrix[0].length || matrix.length==0)
+        return false;
         int n=matrix.length;
         for(int layer=0;layer<n/2;layer++){
             int first=layer;

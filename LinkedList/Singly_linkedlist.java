@@ -2,6 +2,7 @@ public class Singly_linkedlist {
     public Node head;
     public Node tail;
     public int size;
+    // Creation of a singly linked list
     public Node createSinglyLinkedList(int nodeValue){
         head=new Node();
         Node node=new Node();
@@ -12,6 +13,7 @@ public class Singly_linkedlist {
         size=1;
         return head;
     }
+    // Insertion in singly linked list
     public void insert(int value, int location){
         Node node=new Node();
         node.value=value;
@@ -19,20 +21,23 @@ public class Singly_linkedlist {
             createSinglyLinkedList(value);
             return;
         }
+        // Insertion at beginning
         else if(location==0){
             node.next=head;
             head=node;
         }
+        // Insertion at last
         else if(location>=size){
             node.next=null;
             tail.next=node;
             tail=node;
         }
+        // Insertion at any given location
         else{
             Node tempNode=head;
             int index=0;
             while(index<location-1){
-                tempNode=tempNode.next;
+                tempNode=tempNode.next; // tempNode is the Node after which new node is to be inserted
                 index++;
             }
             Node nextNode=tempNode.next;
@@ -41,6 +46,7 @@ public class Singly_linkedlist {
         }
         size++;
     }
+    // Traversal in singly linked list
     public void traversal(){
         if(head==null){
             System.out.println("SLL does not exist");

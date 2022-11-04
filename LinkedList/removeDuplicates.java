@@ -8,13 +8,24 @@ public class removeDuplicates {
         sll.insert(4,3);
         sll.insert(3,4);
         sll.traversal();
+        removeDuplicates rd=new removeDuplicates();
+        rd.removeDups(sll);
+        sll.traversal();
     }
-    public void removeDups(Linked list l1){
+    public void removeDups(Singly_linkedlist ll){
         HashSet<Integer> set=new HashSet<>();
-        Node tempNode=sll.head;
-        Node temp;
-        for(int i=0;i<sll.size;i++){
-            for(int j=i+1;j<sll.size;j++)
+        Node tempNode=ll.head;
+        Node prev=null;
+        while(tempNode!=null){
+            if(!set.contains(tempNode.value)){
+                set.add(tempNode.value);
+                prev=tempNode;
+            }
+            else{
+                prev.next=tempNode.next;
+                ll.size--;
+            }
+            tempNode=tempNode.next;
         }
     }
 }

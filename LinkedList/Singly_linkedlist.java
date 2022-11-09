@@ -40,9 +40,8 @@ public class Singly_linkedlist {
                 tempNode=tempNode.next; // tempNode is the Node after which new node is to be inserted
                 index++;
             }
-            Node nextNode=tempNode.next;
+            node.next=tempNode.next;
             tempNode.next=node;
-            node.next=nextNode;
         }
         size++;
     }
@@ -88,6 +87,7 @@ public class Singly_linkedlist {
             size--;
             if(size==0){
                 tail=null;
+                head=null;
             }
         }
         else if(location>=size-1){ 

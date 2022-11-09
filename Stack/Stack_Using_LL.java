@@ -38,6 +38,7 @@ public class Stack_Using_LL {
     }
     public void deleteStack(){
         sll.head=null;
+        sll.tail=null;
         System.out.println("Stack successfully deleted!");
     }
 }

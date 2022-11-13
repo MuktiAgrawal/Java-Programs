@@ -27,6 +27,13 @@ public class MainBinaryTreeLL {
         N4.right=N9;
         N3.left=N6;
         N3.right=N7;
+        binaryTree.root=N1;
         binaryTree.preorder(N1);
+        //System.out.println("Inorder");
+        // binaryTree.inorder(N1);
+        // System.out.println("Postorder");
+        // binaryTree.postOrder(N1);
+        binaryTree.levelOrder();
+        binaryTree.searchBinaryNode("N11");
     }
 }

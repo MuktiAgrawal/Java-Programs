@@ -20,5 +20,6 @@ public class Calculus_derivative_Integration {
         System.out.println("Derivative at x = "+x+" is "+(2*a*x+b));
         System.out.println("The anti-derivative of the equation is "+(a/3.0)+"x^3+"+(b/2.0)+"x^2+"+c);
         System.out.println(name+", you owe Mukti forever!");
+        sc.close();
     }
 }

@@ -58,4 +58,48 @@ public class BinaryTreeArray {
         postorder(index*2+1);
         System.out.print(arr[index]+" ");
     }
+    
+    // levelorder traversal
+    public void levelOrder(){
+        System.out.println();
+        for(int i=1;i<=lastUsedIndex;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+
+    // searching 
+    public int search(String value){
+        for(int i=1;i<=lastUsedIndex;i++){
+            if(arr[i]==value){
+                System.out.println("\n"+value+" is found at location: "+i);
+                return i;
+            }
+        }
+        System.out.println("The value does not exist in binary tree");
+        return -1;
+    }
+
+    // delete a node
+    public void delete(String value){
+        int location=search(value);
+        if(location ==-1){
+            return;
+        }
+        else{
+            arr[location]=arr[lastUsedIndex];
+            lastUsedIndex--;
+            System.out.println("The node successfully deleted");
+        }
+    }
+
+    // delete binary tree
+    public void deleteBinaryTree(){
+        try{
+            arr=null;
+            System.out.println("\nThe binary tree has been successfully deleted");
+        }
+        catch(Exception ex){
+            System.out.println("\nThere was an error deleting the tree");
+        }
+    }
 }

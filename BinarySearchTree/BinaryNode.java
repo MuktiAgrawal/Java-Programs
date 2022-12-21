@@ -5,4 +5,4 @@ public class BinaryNode {
     public BinaryNode right;
     public int value;
     public int height;
-}   
+}

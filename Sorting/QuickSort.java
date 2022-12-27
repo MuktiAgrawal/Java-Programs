@@ -4,7 +4,7 @@ public class QuickSort {
         int pivot=end;
         int i=start-1;
         for(int j=start;j<end;j++){
-            if(array[j]<=array[pivot]){
+            if(array[j]<array[pivot]){
                 i++;
                 int temp=array[i];
                 array[i]=array[j];

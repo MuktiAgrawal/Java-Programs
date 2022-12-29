@@ -132,6 +132,6 @@ public class DoublyLinkedList {
             tempNode=tempNode.next;
         }
         head=tail=null;
-        System.out.println("SLL deleted successfully");
+        System.out.println("DLL deleted successfully");
     }
 }

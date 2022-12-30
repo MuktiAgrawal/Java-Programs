@@ -8,5 +8,9 @@ public class MainCDLL {
         cdll.traverseCDLL();
         cdll.reverseTraverseCDLL();
         cdll.searchCDLL(4);
+        cdll.deleteNode(0);
+        cdll.traverseCDLL();
+        cdll.deleteCDLL();
+        cdll.traverseCDLL();
     }
 }

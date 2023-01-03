@@ -7,11 +7,18 @@ public class Main_BTArray {
         newBinaryTree.insert("N4");
         newBinaryTree.insert("N5");
         newBinaryTree.insert("N6");
-        System.out.println("Preorder:");
-        newBinaryTree.preorder(1);
-        System.out.println("\nInorder");
-        newBinaryTree.inorder(1);
-        System.out.println("\nPostorder");
-        newBinaryTree.postorder(1);
+        // System.out.println("Preorder:");
+        // newBinaryTree.preorder(1);
+        // System.out.println("\nInorder");
+        // newBinaryTree.inorder(1);
+        // System.out.println("\nPostorder");
+        // newBinaryTree.postorder(1);
+        // System.out.println("\nLevelOrder");
+        // newBinaryTree.levelOrder();
+        int s=newBinaryTree.search("N5");
+        System.out.println(s);
+        newBinaryTree.delete("N2");
+        newBinaryTree.levelOrder();
+        newBinaryTree.deleteBinaryTree();
     }
 }

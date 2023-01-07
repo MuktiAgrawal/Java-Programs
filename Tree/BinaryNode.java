@@ -1,5 +1,5 @@
 public class BinaryNode {
-    public int value;
+    public String value;
     public BinaryNode left;
     public BinaryNode right;
     public int height;

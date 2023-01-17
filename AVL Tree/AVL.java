@@ -121,6 +121,7 @@ public class AVL {
         else{
             node.right=insertNode(node.right, nodeValue);
         }
+        // Incrementing the node height
         node.height=1+Math.max(getHeight(node.left),getHeight(node.right));
         int balance=getBalance(node);
         if(balance>1 && nodeValue<node.left.value){
@@ -154,7 +155,7 @@ public class AVL {
             return minimumNode(root.left);
         }
     }
-//     // Delete node
+    // Delete node
     public BinaryNode deleteNode(BinaryNode node,int value){
         if(node==null){
             System.out.println("The value not found in BST");
@@ -174,7 +175,7 @@ public class AVL {
                 node.right=deleteNode(node.right, minNodeForRight.value);
             }
             else if(node.left!=null){
-            node=node.left;
+                node=node.left;
             }
             else if(node.right!=null){
                 node=node.right;

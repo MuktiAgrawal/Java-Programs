@@ -11,7 +11,7 @@ public class SelectionSort {
             if(minIndex!=i){
                 int temp=arr[i];
                 arr[i]=arr[minIndex];
-                arr[minIndex]=arr[i];
+                arr[minIndex]=temp;
             }
         }
     }

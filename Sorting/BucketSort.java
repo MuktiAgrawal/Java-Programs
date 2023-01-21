@@ -30,6 +30,8 @@ public class BucketSort {
         for(int i=0;i<buckets.length;i++){
             buckets[i]=new ArrayList<Integer>();
         }
+
+        // Adding elements of array to buckets
         for(int value:arr){
             int bucketNumber=(int)Math.ceil(((float)value*numberOfBuckets)/(float)maxValue);
             buckets[bucketNumber-1].add(value);
@@ -37,12 +39,14 @@ public class BucketSort {
         System.out.println("\n\n Printing buckets before sorting");
         printBucket(buckets);
 
+        // Sorting the buckets
         for(ArrayList<Integer> bucket:buckets){
             Collections.sort(bucket);
         }
         System.out.println("\n\n Printing buckets after sorting");
         printBucket(buckets);
 
+        // Merging the sorted buckets in the original array
         int index=0;
         for(ArrayList<Integer> bucket:buckets){
             for(int value:bucket){

@@ -29,10 +29,20 @@ public class WeightedGraph {
             System.out.println();
         }
     }
+    
+    // Path Print
     public static void pathPrint(WeightedNode node){
         if(node.parent!=null){
             pathPrint(node.parent);
         }
         System.out.print(node.name+" ");
+    }
+
+    // Add Weighted Edge
+    public void addWeightedEdge(int i,int j,int d){
+        WeightedNode first=nodeList.get(i);
+        WeightedNode second=nodeList.get(j);
+        first.neighbors.add(second);
+        first.weightMap.put(second,d);
     }
 }

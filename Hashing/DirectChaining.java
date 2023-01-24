@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
 public class DirectChaining {
     LinkedList<String>[] hashTable; // this is an array of type LinkedList<String>

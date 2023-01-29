@@ -68,9 +68,7 @@ public class common_elements_in_three_sortedArrays {
             // keep incrementing k
             while (k < n3 && ar3[k] == prev3)
                 k++;
-
             if (i < n1 && j < n2 && k < n3) {
-
                 // If x = y and y = z, print any of
                 // them, update prev1 prev2, prev3
                 // and move ahead in each array
@@ -83,9 +81,7 @@ public class common_elements_in_three_sortedArrays {
                     j++;
                     k++;
                 }
-
-                // If x < y, update prev1
-                // and increment i
+                // If x < y, update prev1 and increment i
                 else if (ar1[i] < ar2[j]) {
                     prev1 = ar1[i];
                     i++;
@@ -113,18 +109,11 @@ public class common_elements_in_three_sortedArrays {
     // Method 3: Using frequency count array
     public static void commonElements3(int[] arr1,int[] arr2,int[] arr3, int n1,int n2, int n3)
     {
-        // creating a max variable
-        // for storing the maximum
-        // value present in the all
-        // the three array
-        // this will be the size of
-        // array for calculating the
-        // frequency of each element
-        // present in all the array
+        // creating a max variable for storing the maximum value present in the all the three array
+        // this will be the size of array for calculating the frequency of each element present in all the array
         int max = Integer.MIN_VALUE;
 
-        // deleting duplicates in linear time
-        // for arr1
+        // deleting duplicates in linear time for arr1
         int res1 = 1;
         for (int i = 1; i < n1; i++) {
             max = Math.max(arr1[i], max);
@@ -134,8 +123,7 @@ public class common_elements_in_three_sortedArrays {
             }
         }
 
-        // deleting duplicates in linear time
-        // for arr2
+        // deleting duplicates in linear time for arr2
         int res2 = 1;
         for (int i = 1; i < n2; i++) {
             max = Math.max(arr2[i], max);
@@ -145,8 +133,7 @@ public class common_elements_in_three_sortedArrays {
             }
         }
 
-        // deleting duplicates in linear time
-        // for arr3
+        // deleting duplicates in linear time for arr3
         int res3 = 1;
         for (int i = 1; i < n3; i++) {
             max = Math.max(arr3[i], max);
@@ -159,9 +146,7 @@ public class common_elements_in_three_sortedArrays {
         // creating an array for finding frequency
         int[] freq = new int[max + 1];
 
-        // calculating the frequency of
-        // all the elements present in
-        // all the array
+        // calculating the frequency of all the elements present in all the array
         for (int i = 0; i < res1; i++)
             freq[arr1[i]]++;
         for (int i = 0; i < res2; i++)
@@ -200,5 +185,28 @@ public class common_elements_in_three_sortedArrays {
                 uset3.add(c[i]);
             }
         }
+    }
+
+    ArrayList<Integer> commonElements4(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        // code here 
+        HashSet<Integer> set1=new HashSet<Integer>();
+        HashSet<Integer> set2=new HashSet<Integer>();
+        ArrayList<Integer> result=new ArrayList<Integer>();
+        for(int i=0;i<n1;i++){
+            set1.add(A[i]);
+        }
+        for(int i=0;i<n2;i++){
+            set2.add(B[i]);
+        }
+        for(int i=0;i<n3;i++){
+            if(set1.contains(C[i]) && set2.contains(C[i]) && !result.contains(C[i])){
+                result.add(C[i]);
+            }   
+        }
+        if(result.size()<=0){
+            result.add(-1);
+        }
+        return result;
     }
 }

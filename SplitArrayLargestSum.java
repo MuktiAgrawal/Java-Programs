@@ -1,4 +1,6 @@
 /* https://leetcode.com/problems/split-array-largest-sum/ */
+/* Time complexity: O(log(sum-max+1)*n) */
+
 public class SplitArrayLargestSum {
     public int splitArray(int[] nums, int k) {
         int end = 0, start = Integer.MIN_VALUE;

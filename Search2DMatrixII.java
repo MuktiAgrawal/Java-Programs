@@ -1,4 +1,5 @@
 /* https://leetcode.com/problems/search-a-2d-matrix-ii/description/ */
+/* Time Complexity : O(n) */
 public class Search2DMatrixII {
     public boolean searchMatrix(int[][] matrix, int target) {
         int row = 0, col = matrix[0].length - 1;

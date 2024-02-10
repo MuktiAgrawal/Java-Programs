@@ -3,22 +3,22 @@
 import java.util.Arrays;
 
 public class CycleSort {
-    static void cycleSort(int arr[]) {
+    static void cycleSort(int nums[]) {
         int i = 0;
-        // while (i < arr.length) {
-        // if (arr[i] - 1 == i) {
+        // while (i < nums.length) {
+        // if (nums[i] - 1 == i) {
         // i++;
         // } else {
-        // swap(arr, i, arr[i] - 1);
+        // swap(nums, i, nums[i] - 1);
         // }
         // }
 
-        while (i < arr.length) {
-            int correct = arr[i] - 1;
-            if (arr[i] == arr[correct]) {
+        while (i < nums.length) {
+            int correct = nums[i] - 1;
+            if (nums[i] == nums[correct]) {
                 i++;
             } else {
-                swap(arr, i, correct);
+                swap(nums, i, correct);
             }
         }
     }

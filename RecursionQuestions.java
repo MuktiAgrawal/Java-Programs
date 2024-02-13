@@ -1,25 +1,38 @@
-import java.net.SocketPermission;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class RecursionQuestions {
     // Subset, subsequence, string questions
     public static void main(String[] args) {
-        String str = "baccad";
-        String ans = skipChar(str, 0);
-        System.out.println(ans);
-        skipChar2("", "baccdah");
-        System.out.println(skipApple("bacapplecaj"));
-        System.out.println(skipAppNotApple("bdappldapple"));
-        System.out.println(subsequence("", "abc"));
-        int arr[] = { 1, 2, 2 };
-        List<List<Integer>> answer = subsets_iter_duplicates(arr);
-        for (List<Integer> ls : answer) {
-            System.out.println(ls);
-        }
-        System.out.println(permutations("", "abc"));
-        System.out.println(countPermutations("", "abc"));
-        System.out.println(letterCombinations("12"));
+        // String str = "baccad";
+        // String ans = skipChar(str, 0);
+        // System.out.println(ans);
+        // skipChar2("", "baccdah");
+        // System.out.println(skipApple("bacapplecaj"));
+        // System.out.println(skipAppNotApple("bdappldapple"));
+        // System.out.println(subsequence("", "abc"));
+        // int arr[] = { 1, 2, 2 };
+        // List<List<Integer>> answer = subsets_iter_duplicates(arr);
+        // for (List<Integer> ls : answer) {
+        // System.out.println(ls);
+        // }
+        // System.out.println(permutations("", "abc"));
+        // System.out.println(countPermutations("", "abc"));
+        // System.out.println(letterCombinations("6"));
+        // System.out.println(numRollsToTarget(1, 6, 6));
+        // System.out.println(countPaths(3, 3, ""));
+        // System.out.println(countPaths2(3, 3));
+        // System.out.println(countPaths3(3, 3, ""));
+        boolean[][] board = {
+                { true, true, true },
+                { true, true, true },
+                { true, true, true },
+        };
+        // pathRestrictions(board, 0, 0, "");
+        // pathRestrictionsAll(board, 0, 0, "");
+        int[][] path = new int[board.length][board[0].length];
+        pathRestrictionsAll1(board, path, 1, 0, 0, "");
     }
 
     public static String skipChar(String str, int i) {
@@ -201,11 +214,172 @@ public class RecursionQuestions {
             return ls;
         }
         List<String> ans = new ArrayList<>();
-        int first = Integer.parseInt(up.charAt(0) + "");
-        System.out.println(first);
-        for (int i = 0; i < map[first].length(); i++) {
-            ans.addAll(letterCombinationsHelper(map, p + map[first].charAt(i), up.substring(1)));
+        // int first = Integer.parseInt(up.charAt(0) + "");
+        int first = up.charAt(0) - '0'; // will convert '2' to 2
+        if (first == 1) {
+            return ans;
+        }
+        for (int i = 0; i < map[first - 1].length(); i++) {
+            ans.addAll(letterCombinationsHelper(map, p + map[first - 1].charAt(i), up.substring(1)));
         }
         return ans;
+    }
+
+    // 1155. Number of Dice Rolls With Target Sum
+    final static double MOD = Math.pow(10, 9) + 7;
+
+    public static int numRollsToTarget(int n, int k, int target) {
+        if (n == 0) {
+            if (target == 0) {
+                return 1;
+            }
+            return 0;
+        }
+        int count = 0;
+        for (int i = 1; i <= k && i <= target; i++) {
+            count += numRollsToTarget(n - 1, k, target - i) % MOD;
+        }
+        return count;
+    }
+
+    // [DDRR, DRDR, DRRD, RDDR, RDRD, RRDD] - These are just permutations of 4
+    // letters
+    public static ArrayList<String> countPaths(int r, int c, String path) {
+        if (r == 1 && c == 1) {
+            ArrayList<String> ls = new ArrayList<>();
+            ls.add(path);
+            return ls;
+        }
+        ArrayList<String> left = new ArrayList<>();
+        ArrayList<String> right = new ArrayList<>();
+        if (c > 1) {
+            left = countPaths(r, c - 1, path + "R");
+        }
+        if (r > 1) {
+            right = countPaths(r - 1, c, path + "D");
+        }
+        left.addAll(right);
+        return left;
+    }
+
+    public static int countPaths2(int r, int c) {
+        if (r == 1 || c == 1) {
+            return 1;
+        }
+        int count = 0;
+        count += countPaths2(r - 1, c);
+        count += countPaths2(r, c - 1);
+        return count;
+    }
+
+    // If diagonal movement is also allowed.
+    public static ArrayList<String> countPaths3(int r, int c, String path) {
+        if (r == 1 && c == 1) {
+            ArrayList<String> ls = new ArrayList<>();
+            ls.add(path);
+            return ls;
+        }
+        ArrayList<String> left = new ArrayList<>();
+        if (r > 1 && c > 1) {
+            left.addAll(countPaths3(r - 1, c - 1, path + "D"));
+        }
+        if (c > 1) {
+            left.addAll(countPaths3(r, c - 1, path + "H"));
+        }
+        if (r > 1) {
+            left.addAll(countPaths3(r - 1, c, path + "V")); // v stands for vertical down
+        }
+        return left;
+    }
+
+    // maze with obstacles
+    // starting from 0,0 this time
+    public static void pathRestrictions(boolean maze[][], int r, int c, String path) {
+        if (r == maze.length - 1 && c == maze[0].length - 1) {
+            System.out.println(path);
+            return;
+        }
+        // obstacle present
+        if (!maze[r][c]) {
+            return;
+        }
+        if (r < maze.length - 1) {
+            pathRestrictions(maze, r + 1, c, path + "D");
+        }
+        if (c < maze[0].length - 1) {
+            pathRestrictions(maze, r, c + 1, path + "R");
+        }
+    }
+
+    // movement in all directions allowed.
+    public static void pathRestrictionsAll(boolean maze[][], int r, int c, String path) {
+        if (r == maze.length - 1 && c == maze[0].length - 1) {
+            System.out.println(path);
+            return;
+        }
+        // obstacle present
+        if (!maze[r][c]) {
+            return;
+        }
+        // marking this cell as visited
+        maze[r][c] = false;
+        // up
+        if (r > 0) {
+            pathRestrictionsAll(maze, r - 1, c, path + "U");
+        }
+        // left
+        if (c > 0) {
+            pathRestrictionsAll(maze, r, c - 1, path + "L");
+        }
+        // down
+        if (r < maze.length - 1) {
+            pathRestrictionsAll(maze, r + 1, c, path + "D");
+        }
+        // right
+        if (c < maze[0].length - 1) {
+            pathRestrictionsAll(maze, r, c + 1, path + "R");
+        }
+
+        // unmarking the cell after function call is returned
+        maze[r][c] = true;
+    }
+
+    // Print matrix and path
+    public static void pathRestrictionsAll1(boolean maze[][], int box[][], int step, int r, int c, String path) {
+        if (r == maze.length - 1 && c == maze[0].length - 1) {
+            box[r][c] = step;
+            for (int[] arr : box) {
+                System.out.println(Arrays.toString(arr));
+            }
+            System.out.println(path);
+            System.out.println();
+            return;
+        }
+        // obstacle present
+        if (!maze[r][c]) {
+            return;
+        }
+        // marking this cell as visited
+        maze[r][c] = false;
+        box[r][c] = step;
+        // up
+        if (r > 0) {
+            pathRestrictionsAll1(maze, box, step + 1, r - 1, c, path + "U");
+        }
+        // left
+        if (c > 0) {
+            pathRestrictionsAll1(maze, box, step + 1, r, c - 1, path + "L");
+        }
+        // down
+        if (r < maze.length - 1) {
+            pathRestrictionsAll1(maze, box, step + 1, r + 1, c, path + "D");
+        }
+        // right
+        if (c < maze[0].length - 1) {
+            pathRestrictionsAll1(maze, box, step + 1, r, c + 1, path + "R");
+        }
+        box[r][c] = 0;
+        // unmarking the cell after function call is returned
+        maze[r][c] = true;
     }
 }

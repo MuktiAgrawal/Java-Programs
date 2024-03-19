@@ -1,4 +1,6 @@
-public class ArrayI {
+package ArrayI;
+
+public class SetZeroes {
     // uses O(m*n) time
     public void setZeroes(int[][] matrix) {
         boolean row[] = new boolean[matrix.length];

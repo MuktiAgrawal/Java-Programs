@@ -9,6 +9,7 @@ public class RecursionQuestions {
         // String ans = skipChar(str, 0);
         // System.out.println(ans);
         // skipChar2("", "baccdah");
+        // System.out.println(skipChar3("baccdah"));
         // System.out.println(skipApple("bacapplecaj"));
         // System.out.println(skipAppNotApple("bdappldapple"));
         // System.out.println(subsequence("", "abc"));
@@ -71,7 +72,7 @@ public class RecursionQuestions {
         if (ch == 'a') {
             return skipChar3(up.substring(1));
         } else
-            return skipChar3(ch + up.substring(1));
+            return ch + skipChar3(up.substring(1));
     }
 
     // Skip a string
@@ -226,6 +227,7 @@ public class RecursionQuestions {
     }
 
     // 1155. Number of Dice Rolls With Target Sum
+    // n is no. of dice, k is no. of faces on the dice
     final static double MOD = Math.pow(10, 9) + 7;
 
     public static int numRollsToTarget(int n, int k, int target) {
